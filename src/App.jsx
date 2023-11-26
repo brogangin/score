@@ -175,13 +175,30 @@ function Matchs({ matchs }) {
 
 function Match({ match }) {
   return (
-    <div className="row align-items-center mt-1 btn-outline-dark rounded-3 shadow-sm" style={{ height: 65 + "px" }}>
-      <div className="col-3 text-center fw-normal fst-italic lh-sm small">
-        {match.fixture.status.short == "TBD" || match.fixture.status.short == "NS"
-          ? new Date(match.fixture.date).toLocaleDateString() + "\n" + new Date(match.fixture.date).toLocaleTimeString()
-          : match.fixture.status.short == "1H" || match.fixture.status.short == "2H" || match.fixture.status.short == "ET"
-          ? match.fixture.status.elapsed + " '"
-          : match.fixture.status.short}
+    <div className="row align-items-center mt-1 btn-outline-dark rounded-3 shadow-sm" style={{ height: "65px" }}>
+      <div className="col-2 text-center fw-normal fst-italic lh-sm small align-items-center">
+        {match.fixture.status.short == "TBD" || match.fixture.status.short == "NS" ? (
+          <>
+            <div>
+              {new Intl.DateTimeFormat("en-GB", {
+                day: "numeric",
+                month: "short",
+                timeZone: "Asia/Jakarta",
+              }).format(new Date(match.fixture.date))}
+            </div>
+            <div>
+              {new Intl.DateTimeFormat("en-GB", {
+                hour: "numeric",
+                minute: "numeric",
+                timeZone: "Asia/Jakarta",
+              }).format(new Date(match.fixture.date))}
+            </div>
+          </>
+        ) : match.fixture.status.short == "1H" || match.fixture.status.short == "2H" || match.fixture.status.short == "ET" ? (
+          match.fixture.status.elapsed + " '"
+        ) : (
+          match.fixture.status.short
+        )}
       </div>
       <div className="col-1 " style={{ marginLeft: 0.5 + "rem" }}>
         <div className="">
@@ -197,7 +214,7 @@ function Match({ match }) {
         <div style={{ height: "5px" }}></div>
         <div className="small">{match.teams.away.name}</div>
       </div>
-      <div className="col-2 text-center justify-content-end" style={{ marginLeft: "-0.25rem" }}>
+      <div className="col-2 text-center justify-content-end" style={{ marginLeft: "-0.4rem" }}>
         <div className="small">{match.goals.home}</div>
         <div style={{ height: "5px" }}></div>
         <div className="small">{match.goals.away}</div>
