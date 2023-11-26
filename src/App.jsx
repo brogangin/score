@@ -76,7 +76,8 @@ export default function App() {
         },
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
-          "x-rapidapi-key": "651f62fa4668f6e3d440b35ca6cd5727",
+          // "x-rapidapi-key": "651f62fa4668f6e3d440b35ca6cd5727",
+          "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
         },
       })
       .then((response) => {
@@ -85,27 +86,27 @@ export default function App() {
       });
   }, [league.id]);
 
-  if (!matchs)
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      axios
-        .get("https://v3.football.api-sports.io/fixtures", {
-          params: {
-            // 'timezone' : self::timezone(),
-            timezone: "Jakarta/Indonesia",
-            league: league.id,
-            season: 2023,
-          },
-          headers: {
-            "x-rapidapi-host": "v3.football.api-sports.io",
-            "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
-          },
-        })
-        .then((response) => {
-          console.log(response);
-          setMatchs(response.data.response);
-        });
-    }, [league.id]);
+  // if (!matchs)
+  //   // eslint-disable-next-line react-hooks/rules-of-hooks
+  //   useEffect(() => {
+  //     axios
+  //       .get("https://v3.football.api-sports.io/fixtures", {
+  //         params: {
+  //           // 'timezone' : self::timezone(),
+  //           timezone: "Jakarta/Indonesia",
+  //           league: league.id,
+  //           season: 2023,
+  //         },
+  //         headers: {
+  //           "x-rapidapi-host": "v3.football.api-sports.io",
+  //           "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
+  //         },
+  //       })
+  //       .then((response) => {
+  //         console.log(response);
+  //         setMatchs(response.data.response);
+  //       });
+  //   }, [league.id]);
 
   return (
     <>
