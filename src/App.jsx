@@ -176,14 +176,14 @@ function Matchs({ matchs }) {
 function Match({ match }) {
   return (
     <div className="row align-items-center mt-1 btn-outline-dark rounded-3 shadow-sm" style={{ height: 65 + "px" }}>
-      <div className="col-2 text-center fw-normal fst-italic lh-sm small">
+      <div className="col-3 text-center fw-normal fst-italic lh-sm small">
         {match.fixture.status.short == "TBD" || match.fixture.status.short == "NS"
           ? new Date(match.fixture.date).toLocaleDateString() + "\n" + new Date(match.fixture.date).toLocaleTimeString()
           : match.fixture.status.short == "1H" || match.fixture.status.short == "2H" || match.fixture.status.short == "ET"
-          ? match.fixture.status.elapsed
+          ? match.fixture.status.elapsed + " '"
           : match.fixture.status.short}
       </div>
-      <div className="col-2 " style={{ marginLeft: 0.5 + "rem" }}>
+      <div className="col-1 " style={{ marginLeft: 0.5 + "rem" }}>
         <div className="">
           <img src={match["teams"]["home"]["logo"]} style={{ maxHeight: 20 + "px", maxWidth: 20 + "px" }} />
         </div>
