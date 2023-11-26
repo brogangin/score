@@ -86,28 +86,6 @@ export default function App() {
       });
   }, [league.id]);
 
-  // if (!matchs)
-  //   // eslint-disable-next-line react-hooks/rules-of-hooks
-  //   useEffect(() => {
-  //     axios
-  //       .get("https://v3.football.api-sports.io/fixtures", {
-  //         params: {
-  //           // 'timezone' : self::timezone(),
-  //           timezone: "Jakarta/Indonesia",
-  //           league: league.id,
-  //           season: 2023,
-  //         },
-  //         headers: {
-  //           "x-rapidapi-host": "v3.football.api-sports.io",
-  //           "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
-  //         },
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //         setMatchs(response.data.response);
-  //       });
-  //   }, [league.id]);
-
   return (
     <>
       <NavBar onLeague={handleLeague} />
@@ -198,14 +176,14 @@ function Matchs({ matchs }) {
 function Match({ match }) {
   return (
     <div className="row align-items-center mt-1 btn-outline-dark rounded-3 shadow-sm" style={{ height: 65 + "px" }}>
-      <div className="col-1 text-center fw-normal fst-italic lh-sm small">
+      <div className="col-2 text-center fw-normal fst-italic lh-sm small">
         {match.fixture.status.short == "TBD" || match.fixture.status.short == "NS"
           ? new Date(match.fixture.date).toLocaleDateString() + "\n" + new Date(match.fixture.date).toLocaleTimeString()
           : match.fixture.status.short == "1H" || match.fixture.status.short == "2H" || match.fixture.status.short == "ET"
           ? match.fixture.status.elapsed
           : match.fixture.status.short}
       </div>
-      <div className="col-1 " style={{ marginLeft: 0.5 + "rem" }}>
+      <div className="col-2 " style={{ marginLeft: 0.5 + "rem" }}>
         <div className="">
           <img src={match["teams"]["home"]["logo"]} style={{ maxHeight: 20 + "px", maxWidth: 20 + "px" }} />
         </div>
