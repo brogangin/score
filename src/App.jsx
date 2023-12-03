@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import "flowbite";
 import "./App.css";
 import axios from "axios";
 
