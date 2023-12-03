@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "flowbite";
 import "./App.css";
 import axios from "axios";
+import "./App.js";
 
 const leagueList = [
   {
@@ -755,34 +756,34 @@ export default function App() {
 
   function handleLeague(id) {
     const newLeague = leagueList.filter((league) => league.id === id);
-    // setLeague(newLeague[0]);
+    setLeague(newLeague[0]);
   }
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     axios
-  //       .get("https://v3.football.api-sports.io/fixtures", {
-  //         params: {
-  //           // 'timezone' : self::timezone(),
-  //           timezone: "Jakarta/Indonesia",
-  //           league: league.id,
-  //           round: "Regular Season - 14",
-  //           season: 2023,
-  //         },
-  //         headers: {
-  //           "x-rapidapi-host": "v3.football.api-sports.io",
-  //           // "x-rapidapi-key": "651f62fa4668f6e3d440b35ca6cd5727",
-  //           "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
-  //         },
-  //       })
-  //       .then((response) => {
-  //         // console.log(response);
-  //         setMatchs(response.data.response);
-  //       });
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      axios
+        .get("https://v3.football.api-sports.io/fixtures", {
+          params: {
+            // 'timezone' : self::timezone(),
+            timezone: "Jakarta/Indonesia",
+            league: league.id,
+            round: "Regular Season - 14",
+            season: 2023,
+          },
+          headers: {
+            "x-rapidapi-host": "v3.football.api-sports.io",
+            "x-rapidapi-key": "651f62fa4668f6e3d440b35ca6cd5727",
+            // "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
+          },
+        })
+        .then((response) => {
+          // console.log(response);
+          setMatchs(response.data.response);
+        });
+    };
 
-  //   fetchData().catch(console.error);
-  // }, [league.id]);
+    fetchData().catch(console.error);
+  }, [league.id]);
 
   return (
     <Container>
@@ -831,10 +832,15 @@ function NavBar({ onLeague, league }) {
             </ul>
           </div>
           <button
-            data-collapse-toggle="navbar-language"
+            onClick={function () {
+              document.querySelector("#navbar-hamburger").classList.toggle("hidden");
+              document.querySelector("#navbar-button").ariaExpanded = "true";
+            }}
+            id="navbar-button"
+            data-collapse-toggle="navbar-hamburger"
             type="button"
             className="inline-flex items-center p-2 w-9 h-9 sm:w-10 sm:h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-language"
+            aria-controls="navbar-hamburger"
             aria-expanded="false"
           >
             <span className="sr-only">Open main menu</span>
@@ -843,7 +849,7 @@ function NavBar({ onLeague, league }) {
             </svg>
           </button>
         </div>
-        <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
+        <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-hamburger">
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
             <li>
               <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">
