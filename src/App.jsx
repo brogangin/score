@@ -778,7 +778,7 @@ export default function App() {
         })
         .then((response) => {
           // console.log(response);
-          setMatchs(response.data.response);
+          if (response.data.results != 0) setMatchs(response.data.response);
         });
     };
 
