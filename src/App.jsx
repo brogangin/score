@@ -229,7 +229,7 @@ function Main({ bgColor, children }) {
 
 function Matchs({ matchs }) {
   return (
-    <div className="mx-auto mt-5 w-11/12 lg:w-6/12 sm:w-8/12 relative overflow-x-auto shadow-md xs:rounded-lg">
+    <div className="mx-auto mt-5 w-11/12 lg:w-6/12 sm:w-8/12 relative overflow-x-auto shadow-md rounded-lg">
       <table className="w-full mx-auto text-xs lg:text-base sm:text-sm text-gray-700 dark:text-gray-300">
         <caption className="p-5 text-lg font-semibold italic text-center rtl:text-right text-gray-900 bg-gray-200 dark:text-white dark:bg-slate-950">GAMEWEEK 14</caption>
         <tbody>
