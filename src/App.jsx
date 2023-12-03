@@ -89,8 +89,8 @@ export default function App() {
           },
           headers: {
             "x-rapidapi-host": "v3.football.api-sports.io",
-            // "x-rapidapi-key": "651f62fa4668f6e3d440b35ca6cd5727",
-            "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
+            "x-rapidapi-key": "651f62fa4668f6e3d440b35ca6cd5727",
+            // "x-rapidapi-key": "5254bc0cdfb864d4d0381abe374ad217",
           },
         })
         .then((response) => {
@@ -106,7 +106,7 @@ export default function App() {
     <Container>
       <NavBar league={league} onLeague={handleLeague} />
       {/* <p>{league.id}</p> */}
-      <Main bgColor={league.color}>
+      <Main color={league.color}>
         <Matchs matchs={matchs} />
       </Main>
     </Container>
@@ -138,9 +138,9 @@ function NavBar({ onLeague, league }) {
             <ul className="py-2 font-medium" aria-labelledby="league-menu-button">
               {leagueList.map((league) => (
                 <li key={league.id}>
-                  <a href="#" onClick={() => onLeague(league.id)} className="block px-4 py-2 hover:bg-gray-200 " role="menuitem">
+                  <a href="#" onClick={() => onLeague(league.id)} className="block px-4 py-2 hover:bg-gray-200 ">
                     <div className="inline-flex items-center">
-                      <img className="w-3 h-3 lg:w-5 lg:h-5 sm:w-4 sm:h-4  me-2" aria-hidden="true" src={`https://media.api-sports.io/football/leagues/${league.id}.png`}></img>
+                      <img className="w-3 h-3 lg:w-5 lg:h-5 sm:w-4 sm:h-4 me-2" aria-hidden="true" src={`https://media.api-sports.io/football/leagues/${league.id}.png`}></img>
                       {league.name}
                     </div>
                   </a>
@@ -211,8 +211,19 @@ function Container({ children }) {
   return <div className="bg-white dark:bg-slate-950">{children}</div>;
 }
 
-function Main({ bgColor, children }) {
-  return <main className={`py-5 bg-gradient-to-bl from-${bgColor}-500 via-${bgColor}-700 to-${bgColor}-500`}>{children}</main>;
+function Main({ color, children }) {
+  const bg = {
+    purple: "from-purple-400 via-purple-700 to-purple-500",
+    blue: "from-blue-400 via-blue-700 to-blue-500",
+    red: "from-red-400 via-red-700 to-red-500",
+    amber: "from-amber-400 via-amber-700 to-amber-500",
+    sky: "from-sky-400 via-sky-700 to-sky-500",
+    cyan: "from-cyan-400 via-cyan-700 to-cyan-500",
+    orange: "from-orange-400 via-orange-700 to-orange-500",
+    rose: "from-rose-400 via-rose-700 to-rose-500",
+    green: "from-green-400 via-green-700 to-green-500",
+  };
+  return <main className={`sm:h-full h-screen py-5 bg-gradient-to-bl ${bg[color]}`}>{children}</main>;
 }
 
 // function Box({ children }) {
